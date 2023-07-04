@@ -13,6 +13,12 @@ string[] array1 = {"[" + "123", "23", "4568", "1", "11555", "44", "7", "753", "L
 PrintArray1(array1);                                                                                   // Выводим на печать
 int lenghtNew = 3;                                                                                 // Переменная - условие (равно или меньше 3 знаков)
 int num1 = ArrayParametr(array1, lenghtNew);
+string[] newArrayStrings = new string[num1]; // создаем новый массив
+NewArray(array1, newArrayStrings, lenghtNew);
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Массив данных, состоящий из 3 или менее знаков ");
+Console.WriteLine("[" + string.Join(", ", newArrayStrings) + "]");
 
 void PrintArray1(string[] arr)
 
@@ -33,4 +39,18 @@ int ArrayParametr(string[] arr2, int lenghtNew)
         if (arr2[i].Length <= lenghtNew) result++;
     }
     return result;
+}
+
+// функция формирования нового массива строк
+void NewArray(string[] firstArray, string[] secondArray, int lengthLimit)
+{
+    int temporary = 0;
+    for (int i = 0; i < firstArray.Length; i++)
+    {
+        if (firstArray[i].Length <= lengthLimit)
+        {
+            secondArray[temporary] = firstArray[i];
+            temporary++;
+        }
+    }
 }
